@@ -6,8 +6,10 @@ it will automatically create the required database and table.
  !!!Happy Coding!!!
 
 '''
+from beautifultable import BeautifulTable
 import mysql.connector as  conn
 from mysql.connector import Error
+from matplotlib import pyplot as plt
 def database():
     global conn, cursor,mycon
     #mycon = conn.connect(host="ServerName", user="username", passwd="my_sqlpassword", database="database_name")
@@ -32,18 +34,30 @@ def add_record():
     print("Record Added Successfully")
     print("-------------------------------------------------------------")
     mycon.commit()
+#######################################################################################
+'''
 def display_record():
     database()
+    x=[]
+    y=[]
     st1="select * from book"
     cursor.execute(st1)
     data = cursor.fetchall()
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     for row in data:
+        x.append(row[2])
+        y.append(row[6])
         print('Sl No: ',row[0],'Bookid: ',row[1],'BookName: ',row[2],'AuthorName: ',row[3],'Publisher: ',row[4],'ISBN: ',row[5],'NO of Copies: ',row[6],'Price: ',row[7])
+    plt.ylim(0, 50)
+    plt.yticks(range(0, 51, 10))
+    plt.bar(x, y,  align='center', width=[0.5,0.5],color=['r','y'])
+    plt.show()
     print("------------------------------------------------------------------------------------------------------------------------------------------------------------")
+'''
 #######################################Search Record#########################################
 def search_record():
     database()
+
     print("a-Search by Book name")
     print("b-search by Author name")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -59,9 +73,12 @@ def search_record():
          print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
          print('Bookid: ',row[1],'\n''BookName: ',row[2],'\n''AuthorName: ',row[3],'\n''Publisher: ',row[4],'\n''ISBN: ',row[5],'\n''NO of Copies: ',row[6],'\n''Price: ',row[7])
          print("-------------------------------------------------------------")
+
+
      else:
         print("No Record Found")
         print("-------------------------------------------------------------")
+
     elif c=='b':
      srch = input("Enter the Author name to search=")
      st = "select * from book where  aname='{}'".format(srch)
@@ -173,6 +190,29 @@ def update_record():
         cursor.execute(st)
         mycon.commit()
         print("Data Update sucessfully")
+####################################################################################
+
+
+def display_record():
+    database()
+    x = []
+    y = []
+    st1="select * from book"
+    cursor.execute(st1)
+    data = cursor.fetchall()
+    table = BeautifulTable(maxwidth=120)
+    table.set_style(BeautifulTable.STYLE_GRID)
+    table.columns.alignment = BeautifulTable.ALIGN_RIGHT
+    table.columns.header = ["SlNo", "Book Id", "BookName","Author Name ","Publisher","ISBN","NO of Copies","Price"]
+    for r in data:
+        table.rows.append(r)
+        x.append(r[2])
+        y.append(r[6])
+    print(table)
+    plt.ylim(0, 50)
+    plt.yticks(range(0, 51, 10))
+    plt.bar(x, y, align='center', width=[0.5, 0.5], color=['r', 'y'])
+    plt.show()
 
 #################################Main Section########################################
 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
