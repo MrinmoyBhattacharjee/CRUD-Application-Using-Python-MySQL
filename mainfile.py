@@ -209,9 +209,9 @@ def display_record():
         x.append(r[2])
         y.append(r[6])
     print(table)
-    plt.ylim(0, 50)
-    plt.yticks(range(0, 51, 10))
-    plt.bar(x, y, align='center', width=[0.5, 0.5], color=['r', 'y'])
+    plt.ylim(0, 100)
+    plt.yticks(range(0, 101, 10))
+    plt.bar(x, y, align='center')
     plt.show()
 
 #################################Main Section########################################
