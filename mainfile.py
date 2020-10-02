@@ -1,4 +1,4 @@
-'''Conole based CRUD Application developed by Mrinmoy Bhattacharjee
+'''Console based CRUD Application developed by Mrinmoy Bhattacharjee
 Front End: Python
 Back End : MySQL
 please provide the appropriate connection details of mysql in con.connect() function
@@ -20,7 +20,9 @@ def database():
     cursor.execute("use libinfo")
     cursor.execute(
         "CREATE TABLE if not exists `book`(slno INTEGER PRIMARY KEY AUTO_INCREMENT ,bookid varchar(30),bname varchar(40),aname varchar(40),pub varchar(50),isbn varchar(60),noc int, price int)")
-def add_record():
+
+  ########################################################Add Record#############################
+ def add_record():
     database()
     bookid=input("Enter the book id=")
     bname=input("Enter the book Name=")
@@ -34,26 +36,7 @@ def add_record():
     print("Record Added Successfully")
     print("-------------------------------------------------------------")
     mycon.commit()
-#######################################################################################
-'''
-def display_record():
-    database()
-    x=[]
-    y=[]
-    st1="select * from book"
-    cursor.execute(st1)
-    data = cursor.fetchall()
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    for row in data:
-        x.append(row[2])
-        y.append(row[6])
-        print('Sl No: ',row[0],'Bookid: ',row[1],'BookName: ',row[2],'AuthorName: ',row[3],'Publisher: ',row[4],'ISBN: ',row[5],'NO of Copies: ',row[6],'Price: ',row[7])
-    plt.ylim(0, 50)
-    plt.yticks(range(0, 51, 10))
-    plt.bar(x, y,  align='center', width=[0.5,0.5],color=['r','y'])
-    plt.show()
-    print("------------------------------------------------------------------------------------------------------------------------------------------------------------")
-'''
+
 #######################################Search Record#########################################
 def search_record():
     database()
@@ -193,7 +176,7 @@ def update_record():
     else:
         print("You Entered a wrong choice")
         print("--------------------------------------------------------------------")
-####################################################################################
+#############################################Display Record #######################################
 
 
 def display_record():
