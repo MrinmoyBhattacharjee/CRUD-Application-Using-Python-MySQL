@@ -202,7 +202,7 @@ def display_record():
 
 #################################Main Section########################################
 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-print("Library management system\n\n\t\t\t\t *** Developed by Mrinmoy Bhattacharjee ***")
+print("CRUD Application n\n\t\t\t\t *** Developed by Mrinmoy Bhattacharjee ***")
 print("#################################################################")
 while True:
     print("1-- Add Book Record")
