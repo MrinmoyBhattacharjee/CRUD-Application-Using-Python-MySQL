@@ -144,14 +144,14 @@ def delete_record():
 def update_record():
     database()
     slno=int(input("Enter the slno to be update="))
-    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ')
-    print("| a-Update Book Name            |")
-    print("| b-Update Author Name          |")
-    print("| c-Update ISBN No              |")
-    print("| d-Update Price                |")
-    print("| e-Update Publisher Name       |")
-    print("| f-Update Book and Author Name |")
-    print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ')
+    print('|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~******| ')
+    print("| a-Update Book Name                  |")
+    print("| b-Update Author Name                |")
+    print("| c-Update ISBN No                    |")
+    print("| d-Update Price                      |")
+    print("| e-Update Publisher Name             |")
+    print("| f-Update Book and Author Name       |")
+    print('|*****~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|')
     ch=input("Enter the choice between a/b/c/d/e/f=")
     if ch=='a':
         srch=input("Enter the  Corrected Book name value=")
@@ -190,6 +190,9 @@ def update_record():
         cursor.execute(st)
         mycon.commit()
         print("Data Update sucessfully")
+    else:
+        print("You Entered a wrong choice")
+        print("--------------------------------------------------------------------")
 ####################################################################################
 
 
@@ -209,9 +212,9 @@ def display_record():
         x.append(r[2])
         y.append(r[6])
     print(table)
-    plt.ylim(0, 100)
-    plt.yticks(range(0, 101, 10))
-    plt.bar(x, y, align='center')
+    plt.ylim(0, 50)
+    plt.yticks(range(0, 51, 10))
+    plt.bar(x, y, align='center', width=[0.5, 0.5], color=['r', 'y'])
     plt.show()
 
 #################################Main Section########################################
